@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlayerTeleport : MonoBehaviour {
 
-    public LineRenderer laser;
     public GameObject teleportAimerObject;
     public Vector3 teleportLocation;
     public GameObject player;
     public LayerMask laserMask;
-    public float yNudgeAmount = 1f;
+    public float yNudgeAmount = 0.5f;
+
+    public LineRenderer laser;
 
     private void Start() {
         //laser = GetComponentInChildren<LineRenderer>();
     }
 
     void Update() {
-        if (GvrController.IsTouching) {
+        if (GvrController.ClickButton) {
 
             laser.gameObject.SetActive(true);
             teleportAimerObject.gameObject.SetActive(true);
@@ -27,7 +28,7 @@ public class PlayerTeleport : MonoBehaviour {
                 teleportLocation = hit.point;
                 laser.SetPosition(1, teleportLocation);
                 // aimer position
-                teleportAimerObject.transform.position = new Vector3(teleportLocation.x, teleportLocation.y, teleportLocation.z);
+                teleportAimerObject.transform.position = new Vector3(teleportLocation.x, teleportLocation.y + yNudgeAmount, teleportLocation.z);
                 } else {
                 //teleportLocation = transform.position + transform.forward * 15;
                 RaycastHit groundRay;
@@ -36,11 +37,11 @@ public class PlayerTeleport : MonoBehaviour {
                 }
                 laser.SetPosition(1, transform.forward * 15 + transform.position);
                 // aimer position
-                teleportAimerObject.transform.position = teleportLocation + new Vector3(0, 0, 0);
+                teleportAimerObject.transform.position = teleportLocation + new Vector3(0, yNudgeAmount, 0);
                 }
             }
-			if (GvrController.TouchUp) {
-                Debug.Log("released");
+			if (GvrController.ClickButtonUp) {
+              
                 laser.gameObject.SetActive(false);
                 teleportAimerObject.gameObject.SetActive(false);
                 player.transform.position = teleportLocation;
