@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject head;
     public GameObject otherPlayersController;
     public GameObject playerCamera;
+    
 
     // Used to check if is this user's player or an external player
     public bool isControllable;
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour {
             otherPlayersController.SetActive(false);
         } else {
             playerCamera.SetActive(false);
-            gvrControllerPointer.SetActive(false);
+            //gvrControllerPointer.SetActive(false);
         }
     }
 
