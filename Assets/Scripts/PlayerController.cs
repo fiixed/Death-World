@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject gvrControllerPointer;
     public GameObject head;
+    public GameObject body;
     public GameObject otherPlayersController;
     public GameObject playerCamera;
     
@@ -15,15 +16,14 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         if (isControllable) {
-            //TeleportEvent teleportEvent = GameObject.Find("TeleportController").GetComponent & amp; amp; amp; lt; SDKBoyTeleportController & amp; amp; amp; gt; ().teleportEvent;
-            //teleportEvent.AddListener(HandleTeleportEvent);
             playerCamera.SetActive(true);
             gvrControllerPointer.SetActive(true);
             head.SetActive(false);
+            body.GetComponent<MeshRenderer>().enabled = false;
             otherPlayersController.SetActive(false);
         } else {
             playerCamera.SetActive(false);
-            //gvrControllerPointer.SetActive(false);
+            gvrControllerPointer.SetActive(false);
         }
     }
 
