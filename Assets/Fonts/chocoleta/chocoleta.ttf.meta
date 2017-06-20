@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b5f861688300543f68051287e79e6ecf
+timeCreated: 1479498321
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - chocoleta
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6ca1baddb911642d2996f05ad6e8ef00, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
