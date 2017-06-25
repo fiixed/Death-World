@@ -114,8 +114,10 @@ public class roomManager : MonoBehaviour
     void OnJoinedRoom()
     {
 
-        //spawnUI.SetActive(true);
-        currentPlayer = PhotonNetwork.Instantiate("Player", new Vector3(0, 1.6f, 0), Quaternion.identity, 0);
+        Transform spawn = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        currentPlayer = PhotonNetwork.Instantiate("Player", spawn.position, spawn.rotation, 0);
+
+        //currentPlayer = PhotonNetwork.Instantiate("Player", new Vector3(0, 1.6f, 0), Quaternion.identity, 0);
         currentPlayer.GetComponent<PlayerController>().isControllable = true;
 
     }
