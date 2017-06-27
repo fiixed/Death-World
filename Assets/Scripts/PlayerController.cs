@@ -9,10 +9,20 @@ public class PlayerController : MonoBehaviour {
     public GameObject body;
     public GameObject otherPlayersController;
     public GameObject playerCamera;
+
+    public PhotonView pv;
     
 
     // Used to check if is this user's player or an external player
     public bool isControllable;
+
+
+
+    private void Awake() {
+        if (pv.isMine) {
+            pv.RPC("setName", PhotonTargets.AllBuffered, PhotonNetwork.playerName);
+        }
+    }
 
     void Start() {
         if (isControllable) {
@@ -27,8 +37,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //// Handle Telelport UnityEvent
-    //private void HandleTeleportEvent(Vector3 worldPos) {
-    //    gameObject.transform.position = new Vector3(worldPos.x, gameObject.transform.position.y, worldPos.z);
-    //}
+    [PunRPC]
+    public void setName(string nm) {
+        gameObject.name = nm;
+    }
 }
